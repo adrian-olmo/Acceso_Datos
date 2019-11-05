@@ -5,6 +5,8 @@
  */
 package listado_directorios;
 
+import java.io.File;
+
 /**
  *
  * @author Adri
@@ -15,7 +17,16 @@ public class Listado_Directorios {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        String direccion = "C:\\Users\\Usuario DAM 2\\Documents\\NetBeansProjects\\Acceso Datos\\Ticketmaster";
+        File f = new File(direccion);
+        String[] ficheros = f.list();
+        System.out.println("Lista de ficheros: ");
+        for (int i = 0; i < ficheros.length; i++) {
+            File f2 = new File(f, ficheros[i]);
+            System.out.println(f2.getName());
+            f2.isDirectory();
+
+        }
     }
-    
+
 }
