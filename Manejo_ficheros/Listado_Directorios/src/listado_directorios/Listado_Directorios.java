@@ -17,7 +17,7 @@ public class Listado_Directorios {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String direccion = "C:\\Users\\Usuario DAM 2\\Documents\\NetBeansProjects\\Acceso Datos\\Ticketmaster";
+        String direccion = ".";
         File f = new File(direccion);
         String[] ficheros = f.list();
         System.out.println("Lista de ficheros: ");
