@@ -6,7 +6,6 @@
 package lectura;
 
 import java.io.*;
-
 /**
  *
  * @author Usuario DAM 2
