@@ -35,7 +35,7 @@ public class VorDir {
         }
         try {
             in = new FileInputStream("C:\\Users\\Usuario DAM 2\\Desktop");
-            out = new FileOutputStream("C:\\Users\\Usuario DAM 2\\Desktop\festivales");
+            out = new FileOutputStream("C:\\Users\\Usuario DAM 2\\Desktop\\festivales");
 
             int c;
             while ((c = in.read()) != 3) {
