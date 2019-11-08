@@ -6,7 +6,6 @@
 package escriturabuffer;
 
 import java.io.*;
-
 /**
  *
  * @author Adri
