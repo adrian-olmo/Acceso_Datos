@@ -6,7 +6,6 @@
 package listado_directorios;
 
 import java.io.File;
-
 /**
  *
  * @author Adri
