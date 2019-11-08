@@ -5,7 +5,6 @@
  */
 package datastream;
 import java.io.*;
-
 /**
  *
  * @author Adri
