@@ -26,7 +26,7 @@ public class Repaso_Examen {
 
         Persona pers;
 
-        File persona = new File("Persona.txt");
+        File persona = new File("../Lectura/Personas.txt");
         FileOutputStream fileout_persona = new FileOutputStream(persona);
         ObjectOutputStream personadata = new ObjectOutputStream(fileout_persona);
 
