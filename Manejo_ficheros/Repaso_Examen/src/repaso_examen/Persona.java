@@ -5,11 +5,14 @@
  */
 package repaso_examen;
 
+import com.sun.source.doctree.SerialDataTree;
+import java.io.Serializable;
+
 /**
  *
  * @author Adri
  */
-public class Persona {
+public class Persona implements Serializable{
     String nombre, apellidos, DNI;
     int telefono;
 
