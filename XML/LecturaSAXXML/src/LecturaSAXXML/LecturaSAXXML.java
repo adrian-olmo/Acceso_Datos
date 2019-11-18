@@ -9,8 +9,9 @@ package LecturaSAXXML;
  *
  * @author Usuario DAM 2
  */
-import com.thoughtworks.xstream.io.binary.Token.Attribute;
+
 import java.io.*;
+import java.security.KeyStore.Entry.Attribute;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
