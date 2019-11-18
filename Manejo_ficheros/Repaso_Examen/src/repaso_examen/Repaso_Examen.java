@@ -47,6 +47,7 @@ public class Repaso_Examen {
             while (true) {
                 pers = (Persona) dataIS_persona.readObject();
                 System.out.printf("DNI: %s, nombre: %s, apellido: %s %n", pers.getDNI(), pers.getNombre(), pers.getApellidos());
+                System.out.println("Hola Mundo");
             }
         } catch (EOFException eo) {
             System.out.println("FIN DE LECTURA");
