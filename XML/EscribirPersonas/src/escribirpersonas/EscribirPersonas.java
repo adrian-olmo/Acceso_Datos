@@ -29,7 +29,7 @@ public class EscribirPersonas {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        File fichero = new File("¡src\\escribirpersonas\\Artista.txt");
+        File fichero = new File("src/escribirpersonas/Recinto.txt");
         FileInputStream filein = null;
         ObjectInputStream dataOs = null;
         ListaPersona listaper = null;
@@ -41,7 +41,7 @@ public class EscribirPersonas {
         }
         try {
             dataOs = new ObjectInputStream(filein);
-            //System.out.println(dataOs);
+            
         } catch (IOException ex) {
             Logger.getLogger(EscribirPersonas.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -67,7 +67,7 @@ public class EscribirPersonas {
             //quitar etiqueta lista (atributo de la clase ListaPersonas)
             xstream.addImplicitCollection(ListaPersona.class, "lista");
             //Insertar los objetos en el XML
-            xstream.toXML(listaper, new FileOutputStream("Personas.xml"));
+            xstream.toXML(listaper, new FileOutputStream("Prueba.xml"));
             System.out.println("Creando fichero XML...");
         } catch (Exception e) {
             e.printStackTrace();
