@@ -5,6 +5,7 @@
  */
 package Recursos;
 
+import com.thoughtworks.xstream.XStream;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,6 +15,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -69,7 +79,7 @@ public class Entrada {
 
         /*-----------------------------------------------------------------------------------*/
         //Listado de la ruta absoluta de la carpeta Hotels
-         System.out.println("-----------------------------------------------------");
+        System.out.println("-----------------------------------------------------");
         System.out.println(directorio);
         /*-----------------------------------------------------------------------------------*/
         //Listado de la ruta de los ficheros vacios
@@ -99,25 +109,23 @@ public class Entrada {
         String tipo_alojamiento[] = {"Hotel 4*", "Hotel 5*", "Hotel 4*", "Hotel 3*", "Hotel 5*"};
         double valoracion_alojamiento[] = {4.5, 5.2, 3.6, 8.2, 9.6};
         System.out.println("-----------------------------------------------------");
-        
-        for (int i = 0; i < valoracion_alojamiento.length; i++){
+
+        for (int i = 0; i < valoracion_alojamiento.length; i++) {
             alojamiento = new Alojamiento(nombre_alojamiento[i], localidad_alojamiento[i], tipo_alojamiento[i], valoracion_alojamiento[i]);
             aloj_rellenodata.writeObject(alojamiento);
         }
-        
-         try {
+
+        try {
             while (true) {
                 alojamiento = (Alojamiento) dataIS_alojamiento.readObject();
-                
+
                 System.out.printf("%s;%s;%s;%.1f \n", alojamiento.getNombre(), alojamiento.getLocalidad(), alojamiento.getTipoaloj(), alojamiento.getValoracion());
             }
         } catch (EOFException eo) {
-             System.out.println("");
+            System.out.println("");
             System.out.println("FIN DE LECTURA");
         }
         dataIS_alojamiento.close();
 
-       
     }
-
 }
