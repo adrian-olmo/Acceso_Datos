@@ -6,10 +6,8 @@
 package listado_directorios;
 
 import java.io.File;
-/**
- *
- * @author Adri
- */
+
+
 public class Listado_Directorios {
 
     /**
