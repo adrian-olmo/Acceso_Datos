@@ -6,10 +6,8 @@
 package escriturabuffer;
 
 import java.io.*;
-/**
- *
- * @author Adri
- */
+
+
 public class EscrituraBuffer {
 
     /**
