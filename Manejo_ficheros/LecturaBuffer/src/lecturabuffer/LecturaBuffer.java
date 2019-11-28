@@ -11,10 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-/**
- *
- * @author Adri
- */
+
 public class LecturaBuffer {
 
     /**
