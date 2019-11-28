@@ -7,10 +7,8 @@ package salidadatos;
 
 import java.io.*;
 
-/**
- *
- * @author Adri
- */
+
+
 public class SalidaDatos {
 
     /**
