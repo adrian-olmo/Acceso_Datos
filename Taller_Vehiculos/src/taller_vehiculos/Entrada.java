@@ -51,7 +51,7 @@ public class Entrada {
                 /*------LISTADO DE TODOS LOS VEHICULOS DE LA BBDD-------*/
                 case "1":
                     try {
-                            ArrayList<Vehiculo> vehiculolista = vehichulos.lista();
+                        ArrayList<Vehiculo> vehiculolista = vehichulos.lista();
                         for (int i = 0; i < vehiculolista.size(); i++) {
                             System.out.println(vehiculolista.get(i));
                         }
@@ -122,7 +122,7 @@ public class Entrada {
 
                         vehichulos.update(cocheupd);
                         int filas = vehichulos.update(cocheupd);
-                        
+
                     } catch (SQLException e) {
                         System.err.println("Error al actualizar " + e.getMessage());
                     }
