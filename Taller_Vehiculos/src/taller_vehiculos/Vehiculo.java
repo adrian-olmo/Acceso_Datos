@@ -10,19 +10,19 @@ package taller_vehiculos;
  * @author Adri
  */
 public class Vehiculo {
-    
-    private String modelo;
-    private String marca;
-    private int CV; 
-    private String matricula; 
-    private int idVehiculo;
 
-    public Vehiculo(String modelo, String marca, int CV, String matricula, int idVehiculo) {
+    String modelo;
+    String marca;
+    int CV;
+    String matricula;
+    int id_Vehiculo;
+
+    public Vehiculo(String modelo, String marca, int CV, String matricula, int id_Vehiculo) {
         this.modelo = modelo;
         this.marca = marca;
         this.CV = CV;
         this.matricula = matricula;
-        this.idVehiculo = idVehiculo;
+        this.id_Vehiculo = id_Vehiculo;
     }
 
     public String getModelo() {
@@ -57,27 +57,19 @@ public class Vehiculo {
         this.matricula = matricula;
     }
 
-    public int getIdVehiculo() {
-        return idVehiculo;
+    public int getId_Vehiculo() {
+        return id_Vehiculo;
     }
 
-    public void setIdVehiculo(int idVehiculo) {
-        this.idVehiculo = idVehiculo;
+    public void setId_Vehiculo(int id_Vehiculo) {
+        this.id_Vehiculo = id_Vehiculo;
     }
 
-    
+   
 
     @Override
     public String toString() {
-        return "Vehiculo: " + "\nModelo: " + modelo + "\nMarca: " + marca + "\nCV: " + CV + "\nMatricula: " + matricula + "\nIdVehiculo: " + idVehiculo +"\n";
+        return "Vehiculo: " + "\nModelo: " + modelo + "\nMarca: " + marca + "\nCV: " + CV + "\nMatricula: " + matricula + "\nIdVehiculo: " + id_Vehiculo + "\n";
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }

@@ -9,22 +9,20 @@ package taller_vehiculos;
  *
  * @author Adri
  */
-public class Cliente {
+public class Empleado {
     
     private String nombre;
     private String apellido;
-    private Integer dni;
-    private Integer telefono;
+    private int telefono;
+    private int codempleado;
     private String direccion;
-    private Integer idCliente;
 
-    public Cliente(String nombre, String apellido, Integer dni, Integer telefono, String direccion, Integer idCliente) {
+    public Empleado(String nombre, String apellido, int telefono, int codempleado, String direccion) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
         this.telefono = telefono;
+        this.codempleado = codempleado;
         this.direccion = direccion;
-        this.idCliente = idCliente;
     }
 
     public String getNombre() {
@@ -43,20 +41,20 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public Integer getDni() {
-        return dni;
-    }
-
-    public void setDni(Integer dni) {
-        this.dni = dni;
-    }
-
-    public Integer getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
+    }
+
+    public int getCodempleado() {
+        return codempleado;
+    }
+
+    public void setCodempleado(int codempleado) {
+        this.codempleado = codempleado;
     }
 
     public String getDireccion() {
@@ -65,14 +63,6 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public Integer getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(Integer idCliente) {
-        this.idCliente = idCliente;
     }
     
     

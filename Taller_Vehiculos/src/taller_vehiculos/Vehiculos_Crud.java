@@ -57,23 +57,23 @@ public class Vehiculos_Crud {
         ps.setString(2, vehiculo.getModelo());
         ps.setInt(3, vehiculo.getCV());
         ps.setString(4, vehiculo.getMatricula());
-        ps.setInt(5, vehiculo.getIdVehiculo());
+        ps.setInt(5, vehiculo.getId_Vehiculo());
 
         int rs = ps.executeUpdate();
         return null;
     }
 
     /*------------------UPDATE---------------------*/
-    public Integer update(Vehiculo vehiculoactualizado) throws SQLException {
+    public Integer update(Vehiculo vehiculoupd) throws SQLException {
 
         String sql = "UPDATE vehiculo SET modelo = ?, marca = ?, cv = ?, matricula = ? WHERE idVehiculo = ?";
         PreparedStatement ps = conexion.prepareStatement(sql);
 
-        ps.setInt(1, vehiculoactualizado.getIdVehiculo());
-        ps.setString(2, vehiculoactualizado.getModelo());
-        ps.setString(3, vehiculoactualizado.getMarca());
-        ps.setInt(4, vehiculoactualizado.getCV());
-        ps.setString(5, vehiculoactualizado.getMatricula());
+        ps.setInt(1, vehiculoupd.getId_Vehiculo());
+        ps.setString(2, vehiculoupd.getModelo());
+        ps.setString(3, vehiculoupd.getMarca());
+        ps.setInt(4, vehiculoupd.getCV());
+        ps.setString(5, vehiculoupd.getMatricula());
 
         int rs = ps.executeUpdate();
         return rs;

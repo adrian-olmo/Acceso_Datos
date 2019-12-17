@@ -22,8 +22,8 @@ public class Entrada {
 
         Scanner sc = new Scanner(System.in);
         Vehiculos_Crud vehichulos = null;
-        Vehiculo vehiculo = null;
-        String opcprincipal, opcsecundaria;
+        Vehiculo coche;
+        String opcprincipal;
 
         //Realiza la conexion a la base de datos
         try {
@@ -45,13 +45,13 @@ public class Entrada {
             System.out.println("5. Borra un vehiculo"); //Metodo DELETE
             System.out.println("6. Salir de la BBDD");
 
-            opcprincipal = sc.next();
+            opcprincipal = sc.nextLine();
 
             switch (opcprincipal) {
                 /*------LISTADO DE TODOS LOS VEHICULOS DE LA BBDD-------*/
                 case "1":
                     try {
-                        ArrayList<Vehiculo> vehiculolista = vehichulos.lista();
+                            ArrayList<Vehiculo> vehiculolista = vehichulos.lista();
                         for (int i = 0; i < vehiculolista.size(); i++) {
                             System.out.println(vehiculolista.get(i));
                         }
@@ -65,8 +65,8 @@ public class Entrada {
                     try {
                         System.out.println("Inserta codigo de Vehiculo: ");
                         Integer idVehiculo = sc.nextInt();
-                        vehiculo = vehichulos.read(idVehiculo);
-                        System.out.println(vehiculo);
+                        coche = vehichulos.read(idVehiculo);
+                        System.out.println(coche);
                     } catch (SQLException e) {
                         System.err.println("Error al leer " + e.getMessage());
                     }
@@ -106,6 +106,7 @@ public class Entrada {
                     try {
                         System.out.println("Introduce el codigo del vehiculo");
                         int idVehiculo = sc.nextInt();
+                        Vehiculo cocheupd = vehichulos.read(idVehiculo);
 
                         System.out.println("Modelo: ");
                         String actualizado = sc.next();
@@ -114,17 +115,17 @@ public class Entrada {
                         actualizado = sc.next();
 
                         System.out.println("CV: ");
-                        int actualizarCV = sc.nextInt();
+                        int CV = sc.nextInt();
 
                         System.out.println("Matricula: ");
                         actualizado = sc.next();
 
-                        vehichulos.update(vehiculo);
+                        vehichulos.update(cocheupd);
+                        int filas = vehichulos.update(cocheupd);
                         
                     } catch (SQLException e) {
                         System.err.println("Error al actualizar " + e.getMessage());
                     }
-
                     break;
 
                 case "5":
@@ -144,5 +145,7 @@ public class Entrada {
                     break;
             }
         }
+
     }
+
 }
