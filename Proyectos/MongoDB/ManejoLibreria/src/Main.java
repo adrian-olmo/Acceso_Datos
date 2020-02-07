@@ -1,75 +1,104 @@
 import com.mongodb.*;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import org.bson.BsonDocument;
 import org.bson.Document;
 import utils.Agencia;
 import utils.Coche;
 import utils.Proveedor;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Scanner;
 
 
 public class Main {
     private MongoClient mongoClient;    // Java MongoDB client (Cliente Java MongoDB)
     private MongoDatabase mongodb;      // Database object (Objeto base de datos)
-    /**
-     * We establish the connection with the database <b>test</b>.
-     * Establecemos la conexión con la base de datos <b>test</b>.
-     */
+
     public void connectDatabase(){
-        setMongoClient(new MongoClient());
-       setMongodb(getMongoClient().getDatabase("agencia_coches"));
+        mongoClient = new MongoClient("localhost", 27017);
+      mongodb = mongoClient.getDatabase("agencia_coches");
     }
-    /**
-     * Obtenemos la lista de todos los restaurantes (cada uno es un documento)
-     * de la base de datos y los mostramos por pantalla.
-     */
-    public void listRestaurants(){
-        // Para devolver todos los documentos en una colección, llamamos al método find sin ningún documento <b>criteria</b>
-        FindIterable<Document> iterable = getMongodb().getCollection("coches").find();
 
-        // Iteramos los resultados y aplicacimos un bloque para cada documento.
-        Proveedor proveedor = new Proveedor(1, "Ferrari");
-
-        Coche coche = new Coche(Collections.singleton(proveedor));
-        System.out.println(coche.toString());
-
-        for (Document doc : iterable) {
-            MongoCollection<Document> collection = mongodb.getCollection("Agencia");
-            System.out.println(collection.);
-            //System.out.println(doc.getString("marca"));
-            //System.out.println(doc.get("Proveedor"));
-            //System.out.println(doc.get(proveedor.getId_proveedor()));
-
-            //System.out.println(doc.getString("modelo"));
-
+    public void listarAgencias(){
+        MongoCollection<Document> collection = (MongoCollection<Document>) mongodb.getCollection("coches").distinct("Agencia", Agencia.class);
+        collection.
+        MongoCursor<Document> cursor = collection.find().iterator();
+        try {
+            while (cursor.hasNext()) {
+                System.out.println(cursor.next().toJson());
+            }
+        } finally {
+            cursor.close();
         }
     }
-    public MongoClient getMongoClient() {
-        return mongoClient;
+
+    public void listarCoches(){
+        MongoCollection<Document> collection = mongodb.getCollection("coches");
+        MongoCursor<Document> cursor = collection.find().iterator();
+        try {
+            while (cursor.hasNext()) {
+                System.out.println(cursor.next().toJson());
+            }
+        } finally {
+            cursor.close();
+        }
     }
 
-    public void setMongoClient(MongoClient mongoClient) {
-        this.mongoClient = mongoClient;
+    public void listarClientes(){
+        MongoCollection<Document> collection = mongodb.getCollection("clientes");
+        MongoCursor<Document> cursor = collection.find().iterator();
+        try {
+            while (cursor.hasNext()) {
+                System.out.println(cursor.next().toJson());
+            }
+        } finally {
+            cursor.close();
+        }
     }
 
-    public MongoDatabase getMongodb() {
-        return mongodb;
+    public void insertarCoche(){
+        int[] numeros = {1,2,3,4,5,6,7,8,9,0};
+        String[] min={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"};
+        Scanner sc = new Scanner(System.in);
+        int bastidor = sc.nextInt();
+        int imagen = 0;
+        int cv  = sc.nextInt();
+        String marca  = sc.next();
+        String modelo = sc.next();
+        Double precio = sc.nextDouble();
+
+        System.out.println("Introducir proveedor");
+        Proveedor proveedor1 = new Proveedor(sc.nextInt(), sc.next());
+        System.out.println("Introducir agencia");
+        Agencia agencia1 = new Agencia(sc.nextInt(), sc.next());
+        Coche coche = new Coche(bastidor, imagen, cv, marca, modelo, precio, proveedor1, agencia1);
+
+
+        MongoCollection<Document> collection = mongodb.getCollection("coches");
+        Document document = new Document("dni", coche.getNum_bastidor()).append("cv", coche.getCv()).append("marca", coche.getMarca()). append("modelo", coche.getModelo()).append("precio",
+                coche.getModelo()).append("Proveedor", new Document("empresa", proveedor1.getEmpresa()).append("id", proveedor1.getId_proveedor())).append("Agencia", new Document("ciudad", agencia1.getCiudad()).append("id_agencia", agencia1.getId_agencia()));
+        collection.insertOne(document);
     }
 
-    public void setMongodb(MongoDatabase mongodb) {
-        this.mongodb = mongodb;
-    }
+    public void insertarCliente(){
 
+
+    }
 
     public static void main(String args[]){
        Main javaMongodbList = new Main();
         javaMongodbList.connectDatabase();
-        javaMongodbList.listRestaurants();
-        //javaMongodbList.listRestaurants();
-
+        javaMongodbList.listarCoches();
+        System.out.println();
+       /* javaMongodbList.listarClientes();
+        javaMongodbList.insertarCoche();*/
+        System.out.println("Agencias");
+javaMongodbList.listarAgencias();
     }
 
 

@@ -12,6 +12,9 @@ public class Coche {
     private Proveedor proveedor;
     private Agencia agencia;
 
+    public Coche() {
+    }
+
     public Coche(int num_bastidor, int imagen, int cv, String marca, String modelo, double precio, Proveedor proveedor, Agencia agencia) {
         this.num_bastidor = num_bastidor;
         this.imagen = imagen;
