@@ -1,10 +1,9 @@
 import com.mongodb.*;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import com.mongodb.client.MongoDatabase;
+import com.mongodb.MongoClient;
+import com.mongodb.client.*;
 import org.bson.BsonDocument;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 import utils.Agencia;
 import utils.Coche;
 import utils.Proveedor;
@@ -25,9 +24,11 @@ public class Main {
     }
 
     public void listarAgencias(){
-        MongoCollection<Document> collection = (MongoCollection<Document>) mongodb.getCollection("coches").distinct("Agencia", Agencia.class);
-        collection.
-        MongoCursor<Document> cursor = collection.find().iterator();
+        Bson filter = new Document("id_agencia", "Agencia");
+
+        DistinctIterable<Agencia> collection = mongodb.getCollection("coches").distinct("Agencia", Agencia.class);
+        DistinctIterable<Agencia> collectionfiltrada =  collection.filter(filter);
+        MongoCursor<Document> cursor = (MongoCursor<Document>) collectionfiltrada.first();
         try {
             while (cursor.hasNext()) {
                 System.out.println(cursor.next().toJson());
