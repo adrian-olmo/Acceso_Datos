@@ -1,17 +1,19 @@
+import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
+import com.mongodb.util.JSON;
+import netscape.javascript.JSObject;
 import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.json.JSONException;
+import org.json.JSONObject;
 import utils.Agencia;
 import utils.Coche;
 import utils.Proveedor;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -24,19 +26,26 @@ public class Main {
     }
 
     public void listarAgencias(){
-        Bson filter = new Document("id_agencia", "Agencia");
-
-        DistinctIterable<Agencia> collection = mongodb.getCollection("coches").distinct("Agencia", Agencia.class);
-        DistinctIterable<Agencia> collectionfiltrada =  collection.filter(filter);
-        MongoCursor<Document> cursor = (MongoCursor<Document>) collectionfiltrada.first();
+        MongoCollection<Document> collection = mongodb.getCollection("coches");
+        MongoCursor<Document> cursor = collection.distinct("Agencia", Document.class).iterator();
+        ArrayList<Agencia> listaAgencia = new ArrayList<>();
+        Gson gson = new Gson();
         try {
             while (cursor.hasNext()) {
-                System.out.println(cursor.next().toJson());
+                String json = cursor.next().toJson();
+                Gson g = new Gson();
+                Agencia ag= g.fromJson(json, Agencia.class);
+
+               listaAgencia.add(ag);
             }
         } finally {
             cursor.close();
         }
+        for (Agencia ag: listaAgencia) {
+            System.out.println(ag);
+        }
     }
+
 
     public void listarCoches(){
         MongoCollection<Document> collection = mongodb.getCollection("coches");
@@ -51,20 +60,11 @@ public class Main {
     }
 
     public void listarClientes(){
-        MongoCollection<Document> collection = mongodb.getCollection("clientes");
-        MongoCursor<Document> cursor = collection.find().iterator();
-        try {
-            while (cursor.hasNext()) {
-                System.out.println(cursor.next().toJson());
-            }
-        } finally {
-            cursor.close();
-        }
+
     }
 
     public void insertarCoche(){
-        int[] numeros = {1,2,3,4,5,6,7,8,9,0};
-        String[] min={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"};
+
         Scanner sc = new Scanner(System.in);
         int bastidor = sc.nextInt();
         int imagen = 0;
@@ -94,7 +94,7 @@ public class Main {
     public static void main(String args[]){
        Main javaMongodbList = new Main();
         javaMongodbList.connectDatabase();
-        javaMongodbList.listarCoches();
+        //javaMongodbList.listarCoches();
         System.out.println();
        /* javaMongodbList.listarClientes();
         javaMongodbList.insertarCoche();*/
