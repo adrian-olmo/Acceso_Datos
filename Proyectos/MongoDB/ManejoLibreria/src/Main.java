@@ -22,7 +22,7 @@ public class Main {
 
     public void connectDatabase(){
         mongoClient = new MongoClient("localhost", 27017);
-      mongodb = mongoClient.getDatabase("agencia_coches");
+        mongodb = mongoClient.getDatabase("agencia_coches");
     }
 
     public void listarAgencias(){
@@ -36,14 +36,15 @@ public class Main {
                 Gson g = new Gson();
                 Agencia ag= g.fromJson(json, Agencia.class);
 
-               listaAgencia.add(ag);
+                listaAgencia.add(ag);
             }
         } finally {
             cursor.close();
         }
         for (Agencia ag: listaAgencia) {
-            System.out.println(ag);
+            //System.out.println(ag);
         }
+        System.out.println(listaAgencia.get(0));
     }
 
 
@@ -91,15 +92,20 @@ public class Main {
 
     }
 
+    public int borrarCoches(){
+        int filas = 0;
+        return filas;
+    }
+
     public static void main(String args[]){
        Main javaMongodbList = new Main();
         javaMongodbList.connectDatabase();
-        //javaMongodbList.listarCoches();
+        javaMongodbList.listarCoches();
         System.out.println();
-       /* javaMongodbList.listarClientes();
-        javaMongodbList.insertarCoche();*/
+      /*  javaMongodbList.listarClientes();
+        javaMongodbList.insertarCoche();
         System.out.println("Agencias");
-javaMongodbList.listarAgencias();
+javaMongodbList.listarAgencias();*/
     }
 
 
