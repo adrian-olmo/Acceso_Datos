@@ -2,6 +2,7 @@ package Controladoras;
 
 import FuncionesMongo.Conectar;
 import Ventanas.VentanaListar;
+import Ventanas.VentanaOpiniones;
 import Ventanas.VentanaUno;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -76,9 +77,11 @@ public class ControladoraListar implements Initializable {
             public void handle(ActionEvent event) {
                 Coche c = (Coche) listaCoches.getSelectionModel().getSelectedItem();
                 try {
-                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, c.mostrarDatos(), ButtonType.NEXT);
+                    Alert alerta = new Alert(Alert.AlertType.CONFIRMATION, c.toString(), ButtonType.NEXT);
                     alerta.setTitle("Coche elegido");
-                    alerta.show();
+                    alerta.showAndWait();
+                    VentanaOpiniones ventanaOpiniones = new VentanaOpiniones();
+                    btnComprar.getScene().getWindow().hide();
                     /*if(alerta.){
 
                     }*/

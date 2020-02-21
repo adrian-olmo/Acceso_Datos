@@ -37,7 +37,28 @@
                         <Font name="Arial Black" size="24.0" />
                     </font>
                 </JFXButton>
-                <JFXListView GridPane.columnIndex="1" GridPane.rowSpan="3" />
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="1" GridPane.rowSpan="3">
+              <tabs>
+                <Tab text="Coches">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <center>
+                              <JFXListView fx:id="listaCoches" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </content>
+                </Tab>
+                <Tab text="Opiniones">
+                     <content>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                           <center>
+                              <JFXListView fx:id="listaOpiniones" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                     </content>
+                </Tab>
+              </tabs>
+            </TabPane>
             </children>
         </GridPane>
     </center>

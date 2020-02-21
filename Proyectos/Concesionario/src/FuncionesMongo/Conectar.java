@@ -5,8 +5,10 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
 import utils.Agencia;
+import utils.Clientes;
 import utils.Coche;
 import utils.Proveedor;
 
@@ -70,9 +72,28 @@ public class Conectar {
         return coches;
     }
 
-    public void listarClientes() {
+    public ArrayList<Clientes> listarClientes() {
+        connectDatabase();
+        ArrayList<Clientes> clientes = new ArrayList();
+        String resultado = null;
+        MongoCollection<Document> collection = mongodb.getCollection("clientes");
+        MongoCursor<Document> cursor = collection.find().iterator();
+        try {
+            while (cursor.hasNext()) {
+                resultado = cursor.next().toJson();
 
+                Gson g = new Gson();
+                Clientes cl = g.fromJson(resultado, Clientes.class);
+                clientes.add(cl);
+            }
+        } finally {
+            cursor.close();
+        }
+        mongoClient.close();
+        return clientes;
     }
+
+
 
    /* public void insertarCoche() {
 
@@ -97,13 +118,10 @@ public class Conectar {
         collection.insertOne(document);
     }*/
 
-    public void insertarCliente() {
-
-
-    }
-
-    /*public int borrarCoches() {
+//Metodo borrar coches Ivan
+    public void borrarCoches(String valor) {
         MongoCollection<Document> coleccion = mongodb.getCollection("coches");
-        MongoCursor<Document> cursor = coleccion.findOneAndDelete();
-    }*/
+        Document document = (Document) coleccion.find(Filters.eq("bastidor", valor)).first();
+        coleccion.deleteOne(document);
+    }
 }

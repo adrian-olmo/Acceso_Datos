@@ -94,16 +94,5 @@ public class Coche {
         return bastidor + " " + marca + " - " + modelo;
     }
 
-    public String mostrarDatos(){
-        return "Coche{" +
-                "bastidor='" + bastidor + '\'' +
-                ", cv='" + cv + '\'' +
-                ", marca='" + marca + '\'' +
-                ", modelo='" + modelo + '\'' +
-                ", imagen='" + imagen + '\'' +
-                ", precio='" + precio + '\'' +
-                ", Proveedor=" + Proveedor +
-                ", Agencia=" + Agencia +
-                '}';
-    }
+
 }
