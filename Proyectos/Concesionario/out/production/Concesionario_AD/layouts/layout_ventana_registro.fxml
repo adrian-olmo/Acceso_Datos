@@ -103,9 +103,9 @@
          </GridPane.margin>
       </TextField>
       <Button fx:id="btnregistrar" mnemonicParsing="false" prefHeight="25.0" prefWidth="212.0" text="Registrar Coche en la BBDD" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
-      <ImageView fitHeight="150.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.vgrow="SOMETIMES">
+      <ImageView fx:id="imagen" fitHeight="150.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4" GridPane.vgrow="SOMETIMES">
          <image>
-            <Image url="@../resources/cocheregistro.jpg" />
+            <Image  url="@../resources/cocheregistro.jpg" />
          </image>
          <GridPane.margin>
             <Insets left="70.0" top="30.0" />
