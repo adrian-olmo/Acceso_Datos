@@ -10,8 +10,6 @@ public class Coche {
     private Proveedor Proveedor;
     private Agencia Agencia;
 
-    public Coche() {
-    }
 
     public Coche(String bastidor, String imagen, String cv, String marca, String modelo, String precio, Proveedor Proveedor, Agencia Agencia) {
         this.bastidor = bastidor;

@@ -1,6 +1,7 @@
 package Controladoras;
 
 import FuncionesMongo.Conectar;
+import Ventanas.VentanaInsertar;
 import Ventanas.VentanaUno;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -50,7 +51,7 @@ public class ControladoraAdministrar implements Initializable {
         btnInsertar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                VentanaInsertar ventanaInsertar = new VentanaInsertar();
             }
         });
 
