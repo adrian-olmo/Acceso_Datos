@@ -5,6 +5,9 @@ public class Agencia {
     private String id_agencia;
     private String ciudad;
 
+    public Agencia() {
+    }
+
     public Agencia(String id_agencia, String ciudad) {
         this.id_agencia = id_agencia;
         this.ciudad = ciudad;

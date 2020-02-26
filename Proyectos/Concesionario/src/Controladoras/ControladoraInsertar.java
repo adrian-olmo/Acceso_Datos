@@ -1,5 +1,6 @@
 package Controladoras;
 
+import FuncionesMongo.Conectar;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -27,16 +28,22 @@ import java.util.ResourceBundle;
 public class ControladoraInsertar implements Initializable {
 
     @FXML
-    TextField txtbastidor, txtmarca, txtmodelo,txtprecio, txtidAgencia, txtciudadAgencia, txtidProveedor,txtnombreProveedor;
+    TextField txtbastidor, txtmarca, txtmodelo, txtprecio, txtidAgencia, txtciudadAgencia, txtidProveedor, txtnombreProveedor, txtcv;
     @FXML
     Button btnImagen, btnregistrar;
     @FXML
     ImageView imagen;
 
+    Conectar conectar;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         acciones();
+instancias();
+    }
 
+    private void instancias() {
+    conectar = new Conectar();
     }
 
     private void acciones() {
@@ -48,14 +55,15 @@ public class ControladoraInsertar implements Initializable {
                 Stage mainStage = new Stage();
                 fileChooser.setInitialDirectory(new File("src/resources"));
                 File selectedFile;
-                selectedFile =  fileChooser.showOpenDialog(mainStage);
+                selectedFile = fileChooser.showOpenDialog(mainStage);
                 System.out.println(selectedFile.getName());
                 String imagenCoche = selectedFile.getName();
 
                 try {
                     BufferedImage bi = ImageIO.read(selectedFile);  // retrieve image
-                    File outputfile = new File("src\\resources\\Mustang.jpg");
-                    ImageIO.write(bi, "png", outputfile);
+                    Image image = new Image(getClass().getResourceAsStream("../resources/" + imagenCoche));
+                    imagen.setImage(image);
+                    //ImageIO.write(bi, "png", outputfile);
                 } catch (IOException e) {
                     // handle exception
                 }
@@ -63,29 +71,32 @@ public class ControladoraInsertar implements Initializable {
                 //imagen.setImage(new Image(String.valueOf(selectedFile)));
 
                 //if (selectedFile != null) {
-                    //.display(selectedFile);
+                //.display(selectedFile);
                 //}
-              //  File selectedFile = fileChooser.showOpenDialog(mainStage);
+                //  File selectedFile = fileChooser.showOpenDialog(mainStage);
 
             }
         });
-    }
 
-
-    private void agregarCoche(){
-        String bastidor = txtbastidor.getText();
-        String marca = txtmarca.getText();
-        String modelo = txtmodelo.getText();
-        double precio = Double.parseDouble(txtprecio.getText());
-        String idAgencia = txtidAgencia.getText();
-        String ciudadAgencia = txtciudadAgencia.getText();
-        String idProveedor = txtidProveedor.getText();
-        String nombreProveedor = txtnombreProveedor.getText();
-
-        Proveedor proveedoradd = new Proveedor( idProveedor, nombreProveedor);
-        Agencia agenciadd = new Agencia( idAgencia, ciudadAgencia);
-
-        //Coche cocheadd = new Coche(bastidor, marca, modelo, precio, proveedoradd, nombreProveedor);
-
+        btnregistrar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String foto = imagen.getImage().toString();
+                String bastidor;
+                bastidor = txtbastidor.getText();
+                String marca = txtmarca.getText();
+                String modelo = txtmodelo.getText();
+                String cv = txtcv.getText();
+                String precio = txtprecio.getText();
+                String idAgencia = txtidAgencia.getText();
+                String ciudadagencia = txtciudadAgencia.getText();
+                String idProveedor = txtidProveedor.getText();
+                String nombreProveedor = txtnombreProveedor.getText();
+                Agencia agencia = new Agencia(idAgencia, ciudadagencia);
+                Proveedor proveedor = new Proveedor(idProveedor, nombreProveedor);
+                Coche coche = new Coche(bastidor, foto, cv, marca, modelo, precio, proveedor, agencia);
+                conectar.insertarCoche(coche);
+            }
+        });
     }
 }

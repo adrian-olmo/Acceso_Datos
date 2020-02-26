@@ -92,17 +92,20 @@
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Usuario DAM 2\Desktop\Concesionario\src\utils" />
-      <recent name="C:\Users\Usuario DAM 2\IdeaProjects\Concesionario_AD\src\layouts" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario DAM 2\Desktop\Concesionario\src\resources" />
+      <recent name="C:\Users\Usuario DAM 2\IdeaProjects\Concesionario_AD\src\resources" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="utils" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="Ventanas" />
       <recent name="Controladoras" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Usuario DAM 2\Desktop\Concesionario\src\resources" />
-      <recent name="C:\Users\Usuario DAM 2\IdeaProjects\Concesionario_AD\src\resources" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario DAM 2\Desktop\Concesionario\src\utils" />
+      <recent name="C:\Users\Usuario DAM 2\IdeaProjects\Concesionario_AD\src\layouts" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -226,5 +229,10 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Concesionario$Main.ic" NAME="Main Coverage Results" MODIFIED="1582722696937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>.*</FILTER>
+    </SUITE>
   </component>
 </project>

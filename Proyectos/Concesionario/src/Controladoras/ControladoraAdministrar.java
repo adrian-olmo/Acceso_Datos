@@ -22,12 +22,9 @@ public class ControladoraAdministrar implements Initializable {
     JFXButton btnVolver, btnEliminar, btnInsertar, btnModificar;
     @FXML
     JFXListView listaCoches, listaOpiniones;
-    @FXML
-    JFXListView lista;
+
     ObservableList listaObs;
     Conectar conectar = new Conectar();
-
-
 
 
     @Override
@@ -59,10 +56,11 @@ public class ControladoraAdministrar implements Initializable {
         btnEliminar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                Coche coche = (Coche) lista.getSelectionModel().getSelectedItem();
+                Coche coche = (Coche) listaCoches.getSelectionModel().getSelectedItem();
+                System.out.println(coche);
+                //listaObs.remove(coche);
                 conectar.borrarCoches(coche.getbastidor());
-                listaObs.remove(coche);
-                lista.refresh();
+                listarCoches();
             }
         });
 
@@ -74,11 +72,12 @@ public class ControladoraAdministrar implements Initializable {
 
         ObservableList listaAlumnos = FXCollections.observableArrayList();
         Conectar conectar = new Conectar();
-
+        listaAlumnos.clear();
         listaAlumnos.addAll(conectar.listarCoches());
 // se asocia la lista de datos a la tabla
         listaCoches.setItems(listaAlumnos);
     }
+
 
     private void listarClientes() {
 

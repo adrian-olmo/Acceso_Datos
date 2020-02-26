@@ -7,10 +7,8 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import org.bson.Document;
-import utils.Agencia;
-import utils.Clientes;
-import utils.Coche;
-import utils.Proveedor;
+import sun.management.resources.agent_sv;
+import utils.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -94,34 +92,56 @@ public class Conectar {
     }
 
 
-
-   /* public void insertarCoche() {
-
-        Scanner sc = new Scanner(System.in);
-        int bastidor = sc.nextInt();
-        String imagen = null;
-        int cv = sc.nextInt();
-        String marca = sc.next();
-        String modelo = sc.next();
-        Double precio = sc.nextDouble();
-
-        System.out.println("Introducir proveedor");
-        Proveedor proveedor1 = new Proveedor(sc.next(), sc.next());
-        System.out.println("Introducir agencia");
-        Agencia agencia1 = new Agencia(sc.nextInt(), sc.next());
-        Coche coche = new Coche(bastidor, imagen, cv, marca, modelo, precio, proveedor1, agencia1);
-
-
+    public void insertarCoche(Coche coche) {
         MongoCollection<Document> collection = mongodb.getCollection("coches");
-        Document document = new Document("dni", coche.getNum_bastidor()).append("cv", coche.getCv()).append("marca", coche.getMarca()).append("modelo", coche.getModelo()).append("precio",
-                coche.getModelo()).append("Proveedor", new Document("empresa", proveedor1.getEmpresa()).append("id", proveedor1.getId_proveedor())).append("Agencia", new Document("ciudad", agencia1.getCiudad()).append("id_agencia", agencia1.getId_agencia()));
+        Proveedor proveedor = new Proveedor();
+        Agencia agencia = new Agencia();
+        Document document = new Document("bastidor", coche.getbastidor()).append("marca", coche.getMarca()).append("modelo", coche.getModelo()).append("cv", coche.getCv()).append("imagen",
+                coche.getImagen()).append("precio", coche.getPrecio()).append("Proveedor", new Document("id", proveedor.getid()).append("empresa", proveedor.getEmpresa())).append("Agencia", new Document("id_agencia", agencia.getId_agencia()).append("ciudad", agencia.getCiudad()));
         collection.insertOne(document);
-    }*/
+    }
 
-//Metodo borrar coches Ivan
+    //Metodo borrar coches Ivan
     public void borrarCoches(String valor) {
+        connectDatabase();
         MongoCollection<Document> coleccion = mongodb.getCollection("coches");
-        Document document = (Document) coleccion.find(Filters.eq("bastidor", valor)).first();
+        Document document = coleccion.find(Filters.eq("bastidor", valor)).first();
         coleccion.deleteOne(document);
+
+        listarCoches();
+
+        mongoClient.close();
+    }
+
+    public ArrayList<Opinion> listarOpiniones() {
+        connectDatabase();
+        ArrayList<Opinion> opiniones = new ArrayList<>();
+        String resultado = null;
+        MongoCollection<Document> collection = mongodb.getCollection("clientes");
+        MongoCursor<Document> cursor = collection.find().iterator();
+        while (cursor.hasNext()) {
+            resultado = cursor.next().toJson();
+            Gson g = new Gson();
+            Opinion opinion = g.fromJson(resultado, Opinion.class);
+            opiniones.add(opinion);
+        }
+        return opiniones;
+    }
+
+    public void insertarOpiniones(Opinion opinion) {
+        connectDatabase();
+        String dni = opinion.getDni();
+        String nombre = opinion.getNombre();
+        String apellido = opinion.getApellido();
+        String telefono = opinion.getTelefono();
+        String comentario = opinion.getComentario();
+
+        Document doc = new Document("dni", dni)
+                .append("nombre", nombre)
+                .append("apellido", apellido)
+                .append("telefono", telefono)
+                .append("notas", comentario);
+        MongoCollection<Document> coleccion = mongodb.getCollection("clientes");
+    coleccion.insertOne(doc);
     }
 }

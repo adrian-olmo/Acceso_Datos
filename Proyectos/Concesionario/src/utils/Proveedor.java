@@ -5,6 +5,9 @@ public class Proveedor {
     private String id;
     private String empresa;
 
+    public Proveedor() {
+    }
+
     public Proveedor(String id, String empresa) {
         this.id = id;
         this.empresa = empresa;
