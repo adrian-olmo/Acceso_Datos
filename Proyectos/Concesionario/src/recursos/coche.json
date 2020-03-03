@@ -1,0 +1,95 @@
+/* 1 */
+
+{
+    "_id" : ObjectId("5e34035ece5e7bfbde832068"),
+    "bastidor" : "1",
+    "marca" : "Ferrari",
+    "modelo" : "488GTB",
+    "cv" : "400",
+    "imagen" : "488GTb.jpg",
+    "precio" : "120.000",
+    "Proveedor" : {
+        "id" : "1",
+        "empresa" : "Ferrari"
+    },
+    "Agencia" : {
+        "id_agencia" : "1",
+        "ciudad" : "Madrid"
+    }
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5e34035ece5e7bfbde832069"),
+    "bastidor" : "2",
+    "marca" : "Renault",
+    "modelo" : "Clio",
+    "cv" : "80",
+    "imagen" : "Clio.jpg",
+    "precio" : "15.000",
+    "Proveedor" : {
+        "id" : "2",
+        "empresa" : "Renault"
+    },
+    "Agencia" : {
+        "id_agencia" : "1",
+        "ciudad" : "Madrid"
+    }
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5e34035ece5e7bfbde83206a"),
+    "bastidor" : "3",
+    "marca" : "Mini",
+    "modelo" : "Cooper",
+    "cv" : "90",
+    "imagen" : "Cooper.jpg",
+    "precio" : "20.500",
+    "Proveedor" : {
+        "id" : "3",
+        "empresa" : "BMW"
+    },
+    "Agencia" : {
+        "id_agencia" : "3",
+        "ciudad" : "Alemania"
+    }
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5e34035ece5e7bfbde83206b"),
+    "bastidor" : "4",
+    "marca" : "Ferrari",
+    "modelo" : "Berlinetta",
+    "cv" : "475",
+    "imagen" : "Berlinetta.jpg",
+    "precio" : "170.000",
+    "Proveedor" : {
+        "id" : "1",
+        "empresa" : "Ferrari"
+    },
+    "Agencia" : {
+        "id_agencia" : "4",
+        "ciudad" : "Italia"
+    }
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5e34035ece5e7bfbde83206c"),
+    "bastidor" : "5",
+    "marca" : "Ford",
+    "modelo" : "Mustang",
+    "cv" : "200",
+    "imagen" : "Clio.jpg",
+    "precio" : "26.000",
+    "Proveedor" : {
+        "id" : "1",
+        "empresa" : "Ford"
+    },
+    "Agencia" : {
+        "id_agencia" : "3",
+        "ciudad" : "Alemania"
+    }
+}

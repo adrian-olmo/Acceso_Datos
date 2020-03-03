@@ -1,0 +1,49 @@
+/* 1 */
+{
+    "_id" : ObjectId("5e33f58fce5e7bfbde832059"),
+    "dni" : "00258632R",
+    "nombre" : "Adrian",
+    "apellido" : "Olmo",
+    "telefono" : "695410258",
+    "notas" : ""
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5e33f58fce5e7bfbde83205a"),
+    "dni" : "00255552F",
+    "nombre" : "Sergio",
+    "apellido" : "Gutierrez",
+    "telefono" : "666222512",
+    "notas" : ""
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5e33f58fce5e7bfbde83205b"),
+    "dni" : "00211257R",
+    "nombre" : "Sergio",
+    "apellido" : "Garcia",
+    "telefono" : "662352000",
+    "notas" : ""
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5e33f58fce5e7bfbde83205c"),
+    "dni" : "00114458R",
+    "nombre" : "Ivan",
+    "apellido" : "Redondo",
+    "telefono" : "694123500",
+    "notas" : ""
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5e33f58fce5e7bfbde83205d"),
+    "dni" : "10058632A",
+    "nombre" : "Julian",
+    "apellido" : "Garcia",
+    "telefono" : "69410235",
+    "notas" : ""
+}
